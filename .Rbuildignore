@@ -7,3 +7,5 @@
 ^CODE_OF_CONDUCT\.md$
 ^README\.Rmd$
 ^README\.html$
+^_pkgdown\.yaml$
+^CITATION\.cff$
