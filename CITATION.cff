@@ -7,9 +7,12 @@ cff-version: 1.2.0
 message: 'To cite package "rdeps" in publications use:'
 type: software
 license: GPL-2.0-or-later
-title: 'rdeps: The Title of the Project'
+title: 'rdeps: Identify External Packages Used in a Project'
 version: 0.0.0.9000
-abstract: A paragraph providing a full description of the project (on several lines...)
+abstract: Screens all '.R', '.Rmd', and '.qmd' files to extract the name of packages
+  used in a project. This package detects packages called with 'library(foo)', 'require(foo)',
+  and 'foo::bar()' and adds these dependencies in the DESCRIPTION file in the sections
+  Depends, Imports, and Suggests.
 authors:
 - family-names: Casajus
   given-names: Nicolas
@@ -17,7 +20,7 @@ authors:
   orcid: https://orcid.org/0000-0002-5537-5294
 preferred-citation:
   type: manual
-  title: 'rdeps: An R package to ...'
+  title: 'rdeps: An R package to identify external packages used in a project'
   authors:
   - name: Casajus Nicolas
   year: '2023'
