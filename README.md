@@ -1,3 +1,4 @@
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # rdeps <img src="man/figures/package-sticker.png" align="right" style="float:right; height:120px;"/>
@@ -12,7 +13,7 @@ Check](https://github.com/frbcesab/rdeps/actions/workflows/R-CMD-check.yaml/badg
 [![Test
 coverage](https://github.com/frbcesab/rdeps/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/frbcesab/rdeps/actions/workflows/test-coverage.yaml)
 [![codecov](https://codecov.io/gh/frbcesab/rdeps/branch/main/graph/badge.svg)](https://codecov.io/gh/frbcesab/rdeps)
-[![License: GPL (&gt;=
+[![License: GPL (\>=
 2)](https://img.shields.io/badge/License-GPL%20%28%3E%3D%202%29-blue.svg)](https://choosealicense.com/licenses/gpl-2.0/)
 <!-- badges: end -->
 
@@ -41,17 +42,21 @@ The main purpose of `rdeps` is to… **{{ DESCRIBE THE MAIN FEATURES }}**
 You can install the development version from
 [GitHub](https://github.com/) with:
 
-    ## Install < remotes > package (if not already installed) ----
-    if (!requireNamespace("remotes", quietly = TRUE)) {
-      install.packages("remotes")
-    }
+``` r
+## Install < remotes > package (if not already installed) ----
+if (!requireNamespace("remotes", quietly = TRUE)) {
+  install.packages("remotes")
+}
 
-    ## Install < rdeps > from GitHub ----
-    remotes::install_github("frbcesab/rdeps")
+## Install < rdeps > from GitHub ----
+remotes::install_github("frbcesab/rdeps")
+```
 
 Then you can attach the package `rdeps`:
 
-    library("rdeps")
+``` r
+library("rdeps")
+```
 
 ## Get started
 
@@ -63,10 +68,10 @@ started](https://frbcesab.github.io/rdeps/articles/rdeps.html) vignette.
 `rdeps` provides **{{ NUMBER OF VIGNETTES }}** vignettes to learn more
 about the package:
 
--   the [Get
-    started](https://frbcesab.github.io/rdeps/articles/rdeps.html)
-    vignette describes the core features of the package
--   **{{ LIST ADDITIONAL VIGNETTES }}**
+- the [Get
+  started](https://frbcesab.github.io/rdeps/articles/rdeps.html)
+  vignette describes the core features of the package
+- **{{ LIST ADDITIONAL VIGNETTES }}**
 
 ## Citation
 
