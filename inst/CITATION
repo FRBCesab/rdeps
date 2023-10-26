@@ -2,7 +2,7 @@ citHeader("To cite rdeps in publications use:")
 
 bibentry(
   bibtype = "Manual",
-  title   = "rdeps: {An} {R} package to ...",
+  title   = "rdeps: {An} {R} package to identify external packages used in a project",
   author  = c(person("Casajus Nicolas")),
   year    = "2023",
   note    = "R package version 0.0.0.9000",

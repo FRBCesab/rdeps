@@ -22,20 +22,35 @@ coverage](https://github.com/frbcesab/rdeps/actions/workflows/test-coverage.yaml
 <a href="#features">Features</a><br> •
 <a href="#installation">Installation</a><br> •
 <a href="#get-started">Get started</a><br> •
-<a href="#long-form-documentations">Long-form documentations</a><br> •
 <a href="#citation">Citation</a><br> •
-<a href="#contributing">Contributing</a><br> •
-<a href="#acknowledgments">Acknowledgments</a><br> •
-<a href="#references">References</a>
+<a href="#contributing">Contributing</a>
 </p>
 
 ## Overview
 
-The R package `rdeps`… **{{ DESCRIBE YOUR PACKAGE }}**
+The goal of the R package `rdeps` is to provide a tool to identify all
+external packages used in a project (package, compendium, website, etc.)
+and to list them in the
+[`DESCRIPTION`](https://r-pkgs.org/description.html) file.
 
 ## Features
 
-The main purpose of `rdeps` is to… **{{ DESCRIBE THE MAIN FEATURES }}**
+`rdeps` screens all `.R`, `.Rmd`, and `.qmd` files to extract the name
+of packages used in a project. This package detects packages called with
+`library(foo)`, `require(foo)`, and `foo::bar()` and adds these
+dependencies to the `DESCRIPTION` file in the sections *Depends*,
+*Imports*, and *Suggests*.
+
+Different types of dependencies are handle:
+
+- if the package is called with `library(foo)` or `require(foo)`, it
+  will be added to the section **Depends** of the `DESCRIPTION` file
+  (except for vignettes and tests);
+- if the package is called with `foo::bar()`, it will be added to the
+  section **Imports** of the `DESCRIPTION` file (except for vignettes
+  and tests);
+- if the package is only used in vignettes or tests, it will be added to
+  the section **Suggests** of the `DESCRIPTION` file.
 
 ## Installation
 
@@ -63,22 +78,13 @@ library("rdeps")
 For an overview of the main features of `rdeps`, please read the [Get
 started](https://frbcesab.github.io/rdeps/articles/rdeps.html) vignette.
 
-## Long-form documentations
-
-`rdeps` provides **{{ NUMBER OF VIGNETTES }}** vignettes to learn more
-about the package:
-
-- the [Get
-  started](https://frbcesab.github.io/rdeps/articles/rdeps.html)
-  vignette describes the core features of the package
-- **{{ LIST ADDITIONAL VIGNETTES }}**
-
 ## Citation
 
 Please cite `rdeps` as:
 
-> Casajus Nicolas (2023) rdeps: An R package to **{{ TITLE }}**. R
-> package version 0.0.0.9000. <https://github.com/frbcesab/rdeps/>
+> Casajus Nicolas (2023) rdeps: An R package to identify external
+> packages used in a project. R package version 0.0.0.9000,
+> <https://github.com/frbcesab/rdeps/>.
 
 ## Contributing
 
@@ -90,11 +96,3 @@ Please note that the `rdeps` project is released with a [Contributor
 Code of
 Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html).
 By contributing to this project, you agree to abide by its terms.
-
-## Acknowledgments
-
-**{{ OPTIONAL SECTION }}**
-
-## References
-
-**{{ OPTIONAL SECTION }}**
