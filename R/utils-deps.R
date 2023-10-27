@@ -266,8 +266,8 @@ get_deps_in_functions_r <- function() {
 remove_comment_lines <- function(x) {
   
   lapply(x, function(x) {
-    comments <- grep("^\\s{0,}#", x)
-    if (length(comments)) x[-comments] else x })
+    gsub("#.*", "", x)  
+  })
 }
 
 
