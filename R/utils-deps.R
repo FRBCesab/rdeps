@@ -644,3 +644,39 @@ get_code_chunk <- function(x) {
     c(chunks, inline_chunks)
   })
 }
+
+
+
+#' **List non standard folders**
+#' 
+#' List non standard folders (i.e. `analyses/`, `paper/`, `data/`, etc.).
+#' 
+#' @noRd
+
+list_extra_folders <- function() {
+  
+  check_for_descr_file()
+  
+  path <- path_proj()
+  
+  folders <- list.dirs(path, full.names = FALSE, recursive = FALSE)
+  
+  
+  ## Remove hidden folders ----
+  
+  hidden_folders <- grep("^\\.", folders)
+  
+  if (length(hidden_folders) > 0) {
+    folders <- folders[-hidden_folders]
+  }
+  
+  
+  ## Remove standard folders ----
+  
+  folders <- folders[!(folders %in% 
+                         c("inst", "man", "R", "tests", "vignettes", "renv"))]
+  
+  if (length(folders) == 0) folders <- NULL
+  
+  folders
+}
