@@ -251,8 +251,16 @@ get_deps_in_functions <- function(directory = "R") {
 
 #' **Detect dependencies in @examples**
 #' 
-#' Detect dependencies in **@examples** as `foo::bar()`, `library(foo)`, and
-#' `require(foo)`.
+#' Detect dependencies in **@examples** written as `foo::bar()`, `library(foo)`,
+#' `library("foo")`, `library('foo')`, `require(foo)`, `require("foo")`, 
+#' `require('foo')`.
+#' 
+#' @return A named `list` of two `character` vectors:
+#'   - `depends`, packages called with `library(foo)` and `require(foo)`;
+#'   - `imports`, packages called with `foo:bar()`.
+#'   
+#' If a package is called with `library(foo)` and `foo:bar()`, it will be added
+#' only to `depends`.
 #' 
 #' @noRd
 
