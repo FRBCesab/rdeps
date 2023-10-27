@@ -257,6 +257,140 @@ get_deps_in_functions_r <- function() {
 
 
 
+#' **Detect dependencies in @examples**
+#' 
+#' Detect dependencies in **@examples** as `foo::bar()`, `library(foo)`, and
+#' `require(foo)`.
+#' 
+#' @noRd
+
+get_deps_in_examples <- function() { 
+  
+  check_for_descr_file()
+  
+  path <- path_proj()
+  
+  
+  ## No R/ folder ----
+  
+  if (!dir.exists(file.path(path, "R"))) {
+    
+    ui_oops("No {ui_value('R/')} folder found")
+    
+    return(NULL)
+  }
+  
+  
+  r_files <- list.files(path = file.path(path, "R"), pattern = "\\.R$", 
+                        full.names = TRUE, ignore.case = TRUE)
+  
+  
+  ## No .R files in R/ ----
+  
+  if (!length(r_files)) {
+    
+    ui_oops("The {ui_value('R/')} folder is empty")
+    
+    return(NULL)
+    
+  }
+  
+  
+  ## Read R files ----
+    
+  content <- lapply(r_files, function(x) readLines(con = x, warn = FALSE))
+  
+  
+  ## Select roxygen2 headers ----
+  
+  content <- lapply(content, function(x) x[grep("^\\s{0,}#'", x)])
+  
+  
+  ## Select @examples sections (dirty code, but working) ----
+  
+  ex_start <- lapply(content, function(x) grep("^\\s{0,}#'\\s{0,}@examples", x))
+  ex_end   <- lapply(content, function(x) grep("#'\\s{0,}@", x))
+  
+  examples <- list()
+  
+  for (i in seq_len(length(ex_start))) {
+    
+    examples[[i]] <- character(0)
+    
+    if (length(ex_start[[i]])) {
+      
+      for (j in seq_len(length(ex_start[[i]]))) {
+        
+        pos <- ex_end[[i]][ex_end[[i]] > ex_start[[i]][j]] 
+        
+        if (length(pos)) {
+          
+          examples[[i]] <- c(
+            examples[[i]],
+            content[[i]][(ex_start[[i]][j] + 1):(pos[1] - 1)])
+          
+        } else {
+          
+          examples[[i]] <- c(
+            examples[[i]],
+            content[[i]][(ex_start[[i]][j] + 1):length(content[[i]])])
+        }
+      }
+    }
+  }
+  
+  content <- examples
+  
+  
+  ## Remove comments ----
+  
+  content <- remove_rd_comment_lines(content)
+  
+  
+  ## Remove messages ----
+  
+  content <- remove_messages(content)
+  
+  
+  ## Functions called as pkg::fun() ----
+  
+  deps_imports <- get_colon_syntax_deps(content)
+  
+  
+  ## Attached Packages (library & require) ----
+  
+  deps_depends <- get_attached_deps(content)
+  
+  
+  ## Remove duplicates ----
+  
+  pos <- which(deps_imports %in% deps_depends)
+  
+  if (length(pos) > 0) deps_imports <- deps_imports[-pos]
+  
+  
+  ## Remove project name ----
+  
+  pos <- which(deps_depends == basename(path))
+  if (length(pos) > 0) deps_depends <- deps_depends[-pos]
+  
+  pos <- which(deps_imports == basename(path))
+  if (length(pos) > 0) deps_imports <- deps_imports[-pos]
+  
+  
+  ## Clean objects ----
+  
+  if (length(deps_depends) == 0) deps_depends <- NULL
+  if (length(deps_imports) == 0) deps_imports <- NULL
+  
+  list(
+    "depends" = deps_depends,
+    "imports" = deps_imports
+  )
+}
+
+
+
 #' **Remove comment lines**
 #' 
 #' Remove comment lines in .R files
@@ -267,6 +401,21 @@ remove_comment_lines <- function(x) {
   
   lapply(x, function(x) {
     gsub("#.*", "", x)  
+  })
+}
+
+
+
+#' **Remove comment lines in @examples**
+#' 
+#' Remove comment lines in .R files in `@examples`
+#' 
+#' @noRd
+
+remove_rd_comment_lines <- function(x) {
+  
+  lapply(x, function(x) {
+    gsub("(#'.*)(#.*)", "\\1", x)  
   })
 }
 
