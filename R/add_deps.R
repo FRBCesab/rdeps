@@ -5,8 +5,8 @@
 #' compendium, website, etc.) and updates the sections **Depends**, 
 #' **Imports**, and **Suggests** of the `DESCRIPTION` file.
 #' 
-#' A `DESCRIPTION` file can be created with the function 
-#' [usethis::use_description()].
+#' A `DESCRIPTION` file can be created and added to an existing project with 
+#' the function [usethis::use_description()].
 #'  
 #' All `.R`, `.Rmd`, and `.qmd` files are screened to identify packages 
 #' called by `library(foo)`, `library("foo")`, `library('foo')`, 
@@ -163,37 +163,75 @@ add_deps <- function() {
   
   ## Add packages in DESCRIPTION file ----
   
+  msg_info("Searching for", msg_value('Depends'), "dependencies")
+  
   if (is.null(deps_depends)) {
     
     pos <- which(colnames(descr_file) == "Depends")
     if (length(pos)) descr_file <- descr_file[ , -pos]
     
+    msg_oops("No package found", indent = "  ")
+    
   } else {
     
-    deps_depends <- paste0(deps_depends, collapse = ",\n    ")
-    descr_file$"Depends" <- paste0("\n    ", deps_depends)
+    deps_depends_txt <- paste0(deps_depends, collapse = ",\n    ")
+    descr_file$"Depends" <- paste0("\n    ", deps_depends_txt)
+    
+    msg_done("Found", msg_value(length(deps_depends)), "package(s)", 
+             indent = "  ")
+    
+    msg <- paste0("Depends: ", paste0(deps_depends, collapse = ", "))
+    msg_done("Adding the following line in", msg_value('DESCRIPTION'),
+             indent = "  ")
+    msg_line(msg_code(msg), indent = "    ")
   }
+  
+  
+  msg_info("Searching for", msg_value('Imports'), "dependencies")
   
   if (is.null(deps_imports)) {
     
     pos <- which(colnames(descr_file) == "Imports")
     if (length(pos)) descr_file <- descr_file[ , -pos]
     
+    msg_oops("No package found", indent = "  ")
+    
   } else {
     
-    deps_imports <- paste0(deps_imports, collapse = ",\n    ")
-    descr_file$"Imports" <- paste0("\n    ", deps_imports)
+    deps_imports_txt <- paste0(deps_imports, collapse = ",\n    ")
+    descr_file$"Imports" <- paste0("\n    ", deps_imports_txt)
+    
+    msg_done("Found", msg_value(length(deps_imports)), "package(s)", 
+             indent = "  ")
+    
+    msg <- paste0("Imports: ", paste0(deps_imports, collapse = ", "))
+    msg_done("Adding the following line in", msg_value('DESCRIPTION'),
+             indent = "  ")
+    msg_line(msg_code(msg), indent = "    ")
   }
+  
+  
+  msg_info("Searching for", msg_value('Suggests'), "dependencies")
   
   if (is.null(deps_suggests)) {
     
     pos <- which(colnames(descr_file) == "Suggests")
     if (length(pos)) descr_file <- descr_file[ , -pos]
     
+    msg_oops("No package found", indent = "  ")
+    
   } else {
     
-    deps_suggests <- paste0(deps_suggests, collapse = ",\n    ")
-    descr_file$"Suggests" <- paste0("\n    ", deps_suggests)
+    deps_suggests_txt <- paste0(deps_suggests, collapse = ",\n    ")
+    descr_file$"Suggests" <- paste0("\n    ", deps_suggests_txt)
+    
+    msg_done("Found", msg_value(length(deps_suggests)), "package(s)", 
+             indent = "  ")
+    
+    msg <- paste0("Suggests: ", paste0(deps_suggests, collapse = ", "))
+    msg_done("Adding the following line in", msg_value('DESCRIPTION'),
+             indent = "  ")
+    msg_line(msg_code(msg), indent = "    ")
   }
   
   

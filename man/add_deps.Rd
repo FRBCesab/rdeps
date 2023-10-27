@@ -14,8 +14,8 @@ This function detects external packages used in an R project (package,
 compendium, website, etc.) and updates the sections \strong{Depends},
 \strong{Imports}, and \strong{Suggests} of the \code{DESCRIPTION} file.
 
-A \code{DESCRIPTION} file can be created with the function
-\code{\link[usethis:use_description]{usethis::use_description()}}.
+A \code{DESCRIPTION} file can be created and added to an existing project with
+the function \code{\link[usethis:use_description]{usethis::use_description()}}.
 
 All \code{.R}, \code{.Rmd}, and \code{.qmd} files are screened to identify packages
 called by \code{library(foo)}, \code{library("foo")}, \code{library('foo')},
