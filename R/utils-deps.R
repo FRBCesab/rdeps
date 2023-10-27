@@ -680,3 +680,71 @@ list_extra_folders <- function() {
   
   folders
 }
+
+
+
+#' **Detect dependencies in non standard folders**
+#' 
+#' Detect dependencies in `.R` (code and examples), `.Rmd` and `.qmd` written 
+#' as `pkg::fun()`, `library(pkg)`, and `require(pkg)`.
+#' 
+#' @noRd
+
+get_deps_in_extra <- function() {
+  
+  check_for_descr_file()
+  
+  path <- path_proj()
+  
+  folders <- list_extra_folders()
+  
+  if (is.null(folders)) {
+    
+    return(list("depends" = NULL, "imports" = NULL))
+  }
+  
+  
+  ## Get dependencies ----
+  
+  deps_depends <- NULL
+  deps_imports <- NULL
+  
+  for (folder in folders) {
+    
+    deps <- get_deps_in_functions(folder)
+    deps_depends <- c(deps_depends, deps$"depends")
+    deps_imports <- c(deps_imports, deps$"imports")
+    
+    deps_in_examples_tests  <- get_deps_in_examples(folder)
+    deps_depends <- c(deps_depends, deps$"depends")
+    deps_imports <- c(deps_imports, deps$"imports")
+    
+    deps_in_markdown_tests  <- get_deps_in_markdown(folder)
+    deps_depends <- c(deps_depends, deps$"depends")
+    deps_imports <- c(deps_imports, deps$"imports")
+  }
+  
+  
+  ## Remove duplicates ----
+  
+  pos <- which(deps_imports %in% deps_depends)
+  
+  if (length(pos) > 0) deps_imports <- deps_imports[-pos]
+  
+  
+  ## Remove project name ----
+  
+  pos <- which(deps_depends == basename(path))
+  if (length(pos) > 0) deps_depends <- deps_depends[-pos]
+  
+  pos <- which(deps_imports == basename(path))
+  if (length(pos) > 0) deps_imports <- deps_imports[-pos]
+  
+  
+  ## Clean objects ----
+  
+  if (length(deps_depends) == 0) deps_depends <- NULL
+  if (length(deps_imports) == 0) deps_imports <- NULL
+  
+  list("depends" = deps_depends, "imports" = deps_imports)
+}
