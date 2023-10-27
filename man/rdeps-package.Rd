@@ -4,9 +4,9 @@
 \name{rdeps-package}
 \alias{rdeps}
 \alias{rdeps-package}
-\title{rdeps: The Title of the Project}
+\title{rdeps: Identify External Packages Used in a Project}
 \description{
-A paragraph providing a full description of the project (on several lines...)
+Screens all '.R', '.Rmd', and '.qmd' files to extract the name of packages used in a project. This package detects packages called with 'library(foo)', 'require(foo)', and 'foo::bar()' and adds these dependencies in the DESCRIPTION file in the sections Depends, Imports, and Suggests.
 }
 \seealso{
 Useful links:
