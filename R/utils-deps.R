@@ -383,6 +383,135 @@ get_deps_in_examples <- function(directory = "R") {
 
 
 
+#' **Detect dependencies in Markdown files**
+#' 
+#' Detect dependencies in `.Rmd` and `.qmd` as `pkg::fun()`, `library(pkg)`, 
+#' and `require(pkg)`.
+#' 
+#' If `.Rmd` files are detected, the packages `knitr` and `rmarkdown` are added
+#' to the list of packages.
+#' 
+#' If `.qmd` files are detected, the package `quarto` is added to the list of 
+#' packages.
+#' 
+#' @noRd
+
+get_deps_in_markdown <- function(directory = "vignettes") { 
+  
+  check_for_descr_file()
+  
+  path <- path_proj()
+  
+  
+  ## No `directory` folder ----
+  
+  if (!dir.exists(file.path(path, directory))) {
+    
+    return(list("depends" = NULL,"imports" = NULL))
+  }
+  
+  
+  packages_to_add <- NULL
+  
+  
+  ## Search for Rmd ----
+  
+  rmd_files <- list.files(path = file.path(path, directory), 
+                          pattern = "\\.Rmd$", full.names = TRUE, 
+                          ignore.case = TRUE, recursive = TRUE)
+  
+  if (length(rmd_files) > 0) {
+    
+    packages_to_add <- c(packages_to_add, "knitr", "rmarkdown")
+  }
+  
+  
+  ## Search for qmd ----
+  
+  qmd_files <- list.files(path = file.path(path, directory), 
+                          pattern = "\\.qmd$", full.names = TRUE, 
+                          ignore.case = TRUE, recursive = TRUE)
+  
+  if (length(qmd_files) > 0) {
+    
+    packages_to_add <- c(packages_to_add, "quarto")
+  }
+  
+  
+  ## Append files ----
+  
+  md_files <- c(rmd_files, qmd_files)
+  
+  
+  ## No md files in `directory` ----
+  
+  if (!length(md_files)) {
+    
+    return(list("depends" = NULL,"imports" = NULL))
+  }
+  
+  
+  ## Read md files ----
+  
+  content <- lapply(md_files, function(x) readLines(con = x, warn = FALSE))
+  
+  
+  ## Extract code chunks ----
+  
+  content <- get_code_chunk(content)
+  
+    
+  ## Remove comments ----
+    
+  content <- remove_comment_lines(content)
+    
+    
+  ## Remove messages ----
+    
+  content <- remove_messages(content)
+    
+    
+  ## Functions called as pkg::fun() ----
+  
+  deps_imports <- get_colon_syntax_deps(content)
+  
+  
+  ## Add additional packages ----
+  
+  deps_imports <- c(deps_imports, packages_to_add)
+  deps_imports <- sort(unique(deps_imports))
+  
+  
+  ## Attached Packages (library & require) ----
+  
+  deps_depends <- get_attached_deps(content)
+  
+  
+  ## Remove duplicates ----
+  
+  pos <- which(deps_imports %in% deps_depends)
+  
+  if (length(pos) > 0) deps_imports <- deps_imports[-pos]
+  
+  
+  ## Remove project name ----
+  
+  pos <- which(deps_depends == basename(path))
+  if (length(pos) > 0) deps_depends <- deps_depends[-pos]
+  
+  pos <- which(deps_imports == basename(path))
+  if (length(pos) > 0) deps_imports <- deps_imports[-pos]
+  
+  
+  ## Clean objects ----
+  
+  if (length(deps_depends) == 0) deps_depends <- NULL
+  if (length(deps_imports) == 0) deps_imports <- NULL
+  
+  list("depends" = deps_depends, "imports" = deps_imports)
+}
+
+
 #' **Remove comment lines**
 #' 
 #' Remove comment lines in .R files
@@ -486,4 +615,32 @@ get_attached_deps <- function(x) {
   if (length(deps) == 0) deps <- NULL
   
   deps
+}
+
+
+
+#' **Extract Rmd and qmd code chunks**
+#' 
+#' Extract `.Rmd` and `.qmd` code chunks and inline chunks.
+#' 
+#' @noRd
+
+get_code_chunk <- function(x) {
+  
+  lapply(x, function(x) {
+    back_ticks <- grep("```", x)
+    back_ticks <- data.frame(
+      "start" = back_ticks[seq(1, length(back_ticks), by = 2)], 
+      "end"   = back_ticks[seq(2, length(back_ticks), by = 2)])
+    
+    chunks <- NULL
+    for (i in 1:nrow(back_ticks)) {
+      chunks <- c(chunks, 
+                  x[(back_ticks[i, "start"] + 1):(back_ticks[i, "end"] - 1)])
+    }
+    
+    inline_chunks <- x[grep("`r\\s{1,}.*`", x)]
+    
+    c(chunks, inline_chunks)
+  })
 }
