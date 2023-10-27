@@ -124,8 +124,6 @@ get_deps_in_namespace <- function() {
   
   if (file.exists(file.path(path, "NAMESPACE"))) {
     
-    ui_done("Screening {ui_value('NAMESPACE')} file")
-    
     namespace <- readLines(con = file.path(path, "NAMESPACE"), warn = FALSE)
     namespace <- namespace[grep("^\\s{0,}import", namespace)]
     
@@ -145,8 +143,6 @@ get_deps_in_namespace <- function() {
     }
     
   } else {
-    
-    ui_oops("No {ui_value('NAMESPACE')} file found")
     
     deps <- NULL
   }
