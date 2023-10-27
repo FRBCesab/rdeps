@@ -64,6 +64,50 @@ get_deps_in_suggests <- function() {
 
 
 
+#' **Get R minimum version**
+#' 
+#' @noRd
+
+r_min_version <- function() {
+  
+  check_for_descr_file()
+  
+  descr_file <- read_descr_file()
+  
+  if ("Depends" %in% colnames(descr_file)) {
+    
+    deps <- unlist(strsplit(descr_file$"Depends", ","))
+    
+    deps <- gsub("\\(\\s{0,}", " (", deps)
+    deps <- gsub("\\s{0,}\\)", ")", deps)
+    deps <- gsub("=", "= ", deps)
+    deps <- gsub(">", "> ", deps)
+    deps <- gsub("<", "< ", deps)
+    
+    deps <- gsub("\\s{0,}\\)", ")", deps)
+    deps <- gsub("\\s+", " ", deps)
+    deps <- trimws(deps)
+    
+    deps <- gsub("< =", "<=", deps)
+    deps <- gsub("> =", ">=", deps)
+    deps <- gsub("= =", "==", deps)
+    
+    r_version <- deps[grep("^R\\s{0,}\\(", deps)]
+    
+    if (length(r_version) == 0) {
+      
+      r_version <- NULL
+    }
+    
+  } else {
+    
+    r_version <- NULL
+  }
+  
+  r_version
+}
+
+
 #' **Remove R minimum version from list of packages**
 #' 
 #' @noRd
