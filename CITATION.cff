@@ -55,6 +55,17 @@ references:
     email: gary@posit.co
   year: '2023'
 - type: software
+  title: stringr
+  abstract: 'stringr: Simple, Consistent Wrappers for Common String Operations'
+  notes: Imports
+  url: https://stringr.tidyverse.org
+  repository: https://CRAN.R-project.org/package=stringr
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  year: '2023'
+- type: software
   title: usethis
   abstract: 'usethis: Automate Package and Project Setup'
   notes: Imports
