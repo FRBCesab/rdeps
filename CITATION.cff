@@ -35,6 +35,26 @@ contact:
   orcid: https://orcid.org/0000-0002-5537-5294
 references:
 - type: software
+  title: rstudioapi
+  abstract: 'rstudioapi: Safely Access the RStudio API'
+  notes: Imports
+  url: https://rstudio.github.io/rstudioapi/
+  repository: https://CRAN.R-project.org/package=rstudioapi
+  authors:
+  - family-names: Ushey
+    given-names: Kevin
+    email: kevin@rstudio.com
+  - family-names: Allaire
+    given-names: JJ
+    email: jj@posit.co
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+  - family-names: Ritchie
+    given-names: Gary
+    email: gary@posit.co
+  year: '2023'
+- type: software
   title: usethis
   abstract: 'usethis: Automate Package and Project Setup'
   notes: Imports
