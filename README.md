@@ -41,7 +41,7 @@ of packages used in a project. This package detects packages called with
 dependencies to the `DESCRIPTION` file in the sections *Depends*,
 *Imports*, and *Suggests*.
 
-Different types of dependencies are handle:
+Different types of dependencies are handled:
 
 - if the package is called with `library(foo)` or `require(foo)`, it
   will be added to the section **Depends** of the `DESCRIPTION` file
@@ -75,8 +75,14 @@ library("rdeps")
 
 ## Get started
 
-For an overview of the main features of `rdeps`, please read the [Get
-started](https://frbcesab.github.io/rdeps/articles/rdeps.html) vignette.
+`rdeps` contains one main function:
+[`add_deps()`](https://frbcesab.github.io/rdeps/reference/add_deps.html).
+
+**Note:** the project must contain a
+[`DESCRIPTION`](https://r-pkgs.org/description.html) file. A
+`DESCRIPTION` file can be created and added to an existing project with
+the function
+[`usethis::use_description()`](https://usethis.r-lib.org/reference/use_description.html).
 
 ## Citation
 
