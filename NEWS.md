@@ -1,3 +1,3 @@
-# rdeps 0.0.0.9000
+# rdeps 0.1
 
-First development version
+First release of the package
