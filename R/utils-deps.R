@@ -171,35 +171,30 @@ get_deps_in_namespace <- function() {
 #' 
 #' @noRd
 
-get_deps_in_functions_r <- function() {
+get_deps_in_functions <- function(directory = "R") {
   
   check_for_descr_file()
   
   path <- path_proj()
   
   
-  ## No R/ folder ----
+  ## No `directory` folder ----
   
-  if (!dir.exists(file.path(path, "R"))) {
+  if (!dir.exists(file.path(path, directory))) {
     
-    ui_oops("No {ui_value('R/')} folder found")
-    
-    return(NULL)
+    return(list("depends" = NULL,"imports" = NULL))
   }
   
   
-  r_files <- list.files(path = file.path(path, "R"), pattern = "\\.R$", 
-                        full.names = TRUE, ignore.case = TRUE)
+  r_files <- list.files(path = file.path(path, directory), pattern = "\\.R$", 
+                        full.names = TRUE, ignore.case = TRUE, recursive = TRUE)
   
   
-  ## No .R files in R/ ----
+  ## No .R files in `directory` ----
   
   if (!length(r_files)) {
     
-    ui_oops("The {ui_value('R/')} folder is empty")
-    
-    return(NULL)
-    
+    return(list("depends" = NULL,"imports" = NULL))
   }
     
     
@@ -249,10 +244,7 @@ get_deps_in_functions_r <- function() {
   if (length(deps_depends) == 0) deps_depends <- NULL
   if (length(deps_imports) == 0) deps_imports <- NULL
   
-  list(
-    "depends" = deps_depends,
-    "imports" = deps_imports
-  )
+  list("depends" = deps_depends, "imports" = deps_imports)
 }
 
 
@@ -264,35 +256,30 @@ get_deps_in_functions_r <- function() {
 #' 
 #' @noRd
 
-get_deps_in_examples <- function() { 
+get_deps_in_examples <- function(directory = "R") { 
   
   check_for_descr_file()
   
   path <- path_proj()
   
   
-  ## No R/ folder ----
+  ## No `directory` folder ----
   
-  if (!dir.exists(file.path(path, "R"))) {
+  if (!dir.exists(file.path(path, directory))) {
     
-    ui_oops("No {ui_value('R/')} folder found")
-    
-    return(NULL)
+    return(list("depends" = NULL,"imports" = NULL))
   }
   
   
-  r_files <- list.files(path = file.path(path, "R"), pattern = "\\.R$", 
-                        full.names = TRUE, ignore.case = TRUE)
+  r_files <- list.files(path = file.path(path, directory), pattern = "\\.R$", 
+                        full.names = TRUE, ignore.case = TRUE, recursive = TRUE)
   
   
-  ## No .R files in R/ ----
+  ## No .R files in `directory` ----
   
   if (!length(r_files)) {
     
-    ui_oops("The {ui_value('R/')} folder is empty")
-    
-    return(NULL)
-    
+    return(list("depends" = NULL,"imports" = NULL))
   }
   
   
@@ -383,10 +370,7 @@ get_deps_in_examples <- function() {
   if (length(deps_depends) == 0) deps_depends <- NULL
   if (length(deps_imports) == 0) deps_imports <- NULL
   
-  list(
-    "depends" = deps_depends,
-    "imports" = deps_imports
-  )
+  list("depends" = deps_depends, "imports" = deps_imports)
 }
 
 
