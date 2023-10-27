@@ -12,7 +12,7 @@
 #' called by `library(foo)`, `library("foo")`, `library('foo')`, 
 #' `require(foo)`, `require("foo")`, `require('foo')` or `foo::bar()`.
 #' 
-#' Different types of dependencies are handle with the following rules:
+#' Different types of dependencies are handled with the following rules:
 #' - if a package is called with `library(foo)` or `require(foo)`, 
 #' it will be added to the section **Depends** of the `DESCRIPTION` file 
 #' (except for vignettes and tests);

@@ -21,7 +21,7 @@ All \code{.R}, \code{.Rmd}, and \code{.qmd} files are screened to identify packa
 called by \code{library(foo)}, \code{library("foo")}, \code{library('foo')},
 \code{require(foo)}, \code{require("foo")}, \code{require('foo')} or \code{foo::bar()}.
 
-Different types of dependencies are handle with the following rules:
+Different types of dependencies are handled with the following rules:
 \itemize{
 \item if a package is called with \code{library(foo)} or \code{require(foo)},
 it will be added to the section \strong{Depends} of the \code{DESCRIPTION} file
