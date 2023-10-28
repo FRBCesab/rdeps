@@ -13,12 +13,6 @@
     <loc>/LICENSE.html</loc>
   </url>
   <url>
-    <loc>/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>/articles/rdeps.html</loc>
-  </url>
-  <url>
     <loc>/authors.html</loc>
   </url>
   <url>
@@ -28,10 +22,10 @@
     <loc>/news/index.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>/reference/add_deps.html</loc>
   </url>
   <url>
-    <loc>/reference/print_msg.html</loc>
+    <loc>/reference/index.html</loc>
   </url>
   <url>
     <loc>/reference/rdeps-package.html</loc>
