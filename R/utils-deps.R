@@ -229,6 +229,11 @@ get_deps_in_functions <- function(directory = "R") {
   r_files <- list.files(path = file.path(path, directory), pattern = "\\.R$", 
                         full.names = TRUE, ignore.case = TRUE, recursive = TRUE)
   
+  r_files <- c(r_files,
+               list.files(path = file.path(path), pattern = "\\.R$", 
+                          full.names = TRUE, ignore.case = TRUE, 
+                          recursive = FALSE))
+  
   
   ## No .R files in `directory` ----
   
@@ -322,6 +327,10 @@ get_deps_in_examples <- function(directory = "R") {
   r_files <- list.files(path = file.path(path, directory), pattern = "\\.R$", 
                         full.names = TRUE, ignore.case = TRUE, recursive = TRUE)
   
+  r_files <- c(r_files,
+               list.files(path = file.path(path), pattern = "\\.R$", 
+                          full.names = TRUE, ignore.case = TRUE, 
+                          recursive = FALSE))
   
   ## No .R files in `directory` ----
   
@@ -460,6 +469,17 @@ get_deps_in_markdown <- function(directory = "vignettes") {
                           pattern = "\\.Rmd$", full.names = TRUE, 
                           ignore.case = TRUE, recursive = TRUE)
   
+  rmd_files <- c(rmd_files,
+                 list.files(path = file.path(path), pattern = "\\.Rmd$", 
+                            full.names = TRUE, ignore.case = TRUE, 
+                            recursive = FALSE))
+  
+  read_me <- which(tolower(basename(rmd_files)) == "readme.rmd")
+  
+  if (length(read_me) > 0) {
+    rmd_files <- rmd_files[-read_me]
+  }
+  
   if (length(rmd_files) > 0) {
     
     packages_to_add <- c(packages_to_add, "knitr", "rmarkdown")
@@ -472,9 +492,20 @@ get_deps_in_markdown <- function(directory = "vignettes") {
                           pattern = "\\.qmd$", full.names = TRUE, 
                           ignore.case = TRUE, recursive = TRUE)
   
+  qmd_files <- c(qmd_files,
+                 list.files(path = file.path(path), pattern = "\\.qmd$", 
+                            full.names = TRUE, ignore.case = TRUE, 
+                            recursive = FALSE))
+  
+  read_me <- which(tolower(basename(qmd_files)) == "readme.qmd")
+  
+  if (length(read_me) > 0) {
+    qmd_files <- qmd_files[-read_me]
+  }
+  
   if (length(qmd_files) > 0) {
     
-    packages_to_add <- c(packages_to_add, "quarto")
+    packages_to_add <- c(packages_to_add, "knitr", "quarto")
   }
   
   
