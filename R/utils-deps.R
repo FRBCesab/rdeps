@@ -786,11 +786,11 @@ get_deps_in_extra <- function() {
     deps_depends <- c(deps_depends, deps$"depends")
     deps_imports <- c(deps_imports, deps$"imports")
     
-    deps_in_examples_tests  <- get_deps_in_examples(folder)
+    deps <- get_deps_in_examples(folder)
     deps_depends <- c(deps_depends, deps$"depends")
     deps_imports <- c(deps_imports, deps$"imports")
     
-    deps_in_markdown_tests  <- get_deps_in_markdown(folder)
+    deps <- get_deps_in_markdown(folder)
     deps_depends <- c(deps_depends, deps$"depends")
     deps_imports <- c(deps_imports, deps$"imports")
   }
