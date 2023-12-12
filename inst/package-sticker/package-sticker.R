@@ -6,7 +6,7 @@
 # install.packages(c("png", "ggplot2", "hexSticker", "grid", "ggpubr"))
 
 
-rlogo <- png::readPNG(here::here("inst", "package-sticker", "r_logo.png"))
+rlogo <- png::readPNG(here::here("inst", "package-sticker", "logo.png"))
 rlogo <- grid::rasterGrob(rlogo, interpolate = TRUE)
 
 p <- ggplot2::ggplot() +
@@ -18,18 +18,18 @@ p <- ggplot2::ggplot() +
 hexSticker::sticker(
 
   subplot   = p,
-  package   = "R Package",
+  package   = "rdeps",
   filename  = here::here("man", "figures", "package-sticker.png"),
   dpi       = 600,
 
-  p_size    = 28.0,         # Title
-  u_size    =  5.0,         # URL
+  p_size    = 35.0,         # Title
+  u_size    =  8.0,         # URL
   p_family  = "Aller_Rg",
 
-  p_color   = "#32436F",   # Title
-  h_fill    = "#FFFFFF",   # Background
-  h_color   = "#1064B2",   # Border
-  u_color   = "#32436F",   # URL
+  p_color   = "#d65d0e",   # Title
+  h_fill    = "#3c3836",   # Background
+  h_color   = "#b57614",   # Border
+  u_color   = "#d65d0e",   # URL
 
   p_x       = 1.00,        # Title
   p_y       = 0.60,        # Title
@@ -39,7 +39,7 @@ hexSticker::sticker(
   s_width   = 1.25,        # Subplot
   s_height  = 1.25,        # Subplot
 
-  url       = "https://github.com/",
+  url       = "https://frbcesab.github.io/rdeps",
 
   spotlight = TRUE,
   l_alpha   = 0.10,
