@@ -118,15 +118,22 @@ add_deps <- function() {
   
   all_deps <- c(descr_depends, descr_imports, descr_suggests)
   
-  versions <- strsplit(all_deps, "\\s{0,}\\(|\\)")
-  
-  is_version <- unlist(lapply(versions, function(x) {
-    if (length(x) == 2) TRUE else FALSE
-  }))
-  
-  versions <- versions[is_version]
-  pkg_names    <- unlist(lapply(versions, function(x) x[1]))
-  pkg_versions <- unlist(lapply(versions, function(x) x[2]))
+  if (!is.null(all_deps)) {
+    
+    versions <- strsplit(all_deps, "\\s{0,}\\(|\\)")
+    
+    is_version <- unlist(lapply(versions, function(x) {
+      if (length(x) == 2) TRUE else FALSE
+    }))
+    
+    versions <- versions[is_version]
+    pkg_names    <- unlist(lapply(versions, function(x) x[1]))
+    pkg_versions <- unlist(lapply(versions, function(x) x[2]))
+    
+  } else {
+    
+    pkg_versions <- NULL
+  }
   
   
   ## Add version to packages ----
