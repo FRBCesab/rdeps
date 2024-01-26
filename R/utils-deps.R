@@ -644,7 +644,7 @@ get_colon_syntax_deps <- function(x) {
                     "\\s{0,}[A-Z|a-z|0-9|\\.|_]{1,}")
   
   funs <- unlist(lapply(x, function(x) {
-    unlist(stringr::str_extract_all(x, pattern))
+    unlist(regmatches(x, gregexpr(pattern, x)))
   }))
   
   funs <- gsub("\\s", "", funs)
@@ -677,7 +677,7 @@ get_attached_deps <- function(x) {
   pattern <- paste0(pattern, collapse = "|")
   
   deps <- unlist(lapply(x, function(x) {
-    unlist(stringr::str_extract_all(x, pattern))
+    unlist(regmatches(x, gregexpr(pattern, x)))
   }))
   
   deps <- gsub("\\s", "", deps)
