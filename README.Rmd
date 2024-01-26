@@ -14,7 +14,7 @@ knitr::opts_chunk$set(collapse  = TRUE,
 
 
 
-rdeps <img src="man/figures/package-sticker.png" align="right" style="float:right; height:120px;"/>
+rdeps <img src="man/figures/logo.png" align="right" style="float:right; height:120px;"/>
 =========================================================
 
 <!-- badges: start -->

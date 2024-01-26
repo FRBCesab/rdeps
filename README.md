@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# rdeps <img src="man/figures/package-sticker.png" align="right" style="float:right; height:120px;"/>
+# rdeps <img src="man/figures/logo.png" align="right" style="float:right; height:120px;"/>
 
 <!-- badges: start -->
 
@@ -85,7 +85,7 @@ the function
 
 Please cite `rdeps` as:
 
-> Casajus Nicolas (2023) rdeps: An R package to identify external
+> Casajus Nicolas (2024) rdeps: An R package to identify external
 > packages used in a project. R package version 0.1,
 > <https://github.com/frbcesab/rdeps/>.
 

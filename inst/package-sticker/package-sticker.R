@@ -19,7 +19,7 @@ hexSticker::sticker(
 
   subplot   = p,
   package   = "rdeps",
-  filename  = here::here("man", "figures", "package-sticker.png"),
+  filename  = here::here("man", "figures", "logo.png"),
   dpi       = 600,
 
   p_size    = 35.0,         # Title
