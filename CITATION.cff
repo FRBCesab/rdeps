@@ -44,73 +44,7 @@ references:
   - family-names: Csárdi
     given-names: Gábor
     email: csardi.gabor@gmail.com
-  year: '2023'
-- type: software
-  title: crayon
-  abstract: 'crayon: Colored Terminal Output'
-  notes: Imports
-  url: https://github.com/r-lib/crayon#readme
-  repository: https://CRAN.R-project.org/package=crayon
-  authors:
-  - family-names: Csárdi
-    given-names: Gábor
-    email: csardi.gabor@gmail.com
-  year: '2023'
-- type: software
-  title: rstudioapi
-  abstract: 'rstudioapi: Safely Access the RStudio API'
-  notes: Imports
-  url: https://rstudio.github.io/rstudioapi/
-  repository: https://CRAN.R-project.org/package=rstudioapi
-  authors:
-  - family-names: Ushey
-    given-names: Kevin
-    email: kevin@rstudio.com
-  - family-names: Allaire
-    given-names: JJ
-    email: jj@posit.co
-  - family-names: Wickham
-    given-names: Hadley
-    email: hadley@posit.co
-  - family-names: Ritchie
-    given-names: Gary
-    email: gary@posit.co
-  year: '2023'
-- type: software
-  title: stringr
-  abstract: 'stringr: Simple, Consistent Wrappers for Common String Operations'
-  notes: Imports
-  url: https://stringr.tidyverse.org
-  repository: https://CRAN.R-project.org/package=stringr
-  authors:
-  - family-names: Wickham
-    given-names: Hadley
-    email: hadley@rstudio.com
-  year: '2023'
-- type: software
-  title: usethis
-  abstract: 'usethis: Automate Package and Project Setup'
-  notes: Imports
-  url: https://usethis.r-lib.org
-  repository: https://CRAN.R-project.org/package=usethis
-  authors:
-  - family-names: Wickham
-    given-names: Hadley
-    email: hadley@posit.co
-    orcid: https://orcid.org/0000-0003-4757-117X
-  - family-names: Bryan
-    given-names: Jennifer
-    email: jenny@posit.co
-    orcid: https://orcid.org/0000-0002-6983-2759
-  - family-names: Barrett
-    given-names: Malcolm
-    email: malcolmbarrett@gmail.com
-    orcid: https://orcid.org/0000-0003-0299-5825
-  - family-names: Teucher
-    given-names: Andy
-    email: andy.teucher@posit.co
-    orcid: https://orcid.org/0000-0002-7840-692X
-  year: '2023'
+  year: '2024'
 - type: software
   title: utils
   abstract: 'R: A Language and Environment for Statistical Computing'
@@ -119,6 +53,6 @@ references:
   - name: R Core Team
   location:
     name: Vienna, Austria
-  year: '2023'
+  year: '2024'
   institution:
     name: R Foundation for Statistical Computing
