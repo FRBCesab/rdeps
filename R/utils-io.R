@@ -1,20 +1,20 @@
-#' **Open a file in editor**
+#' #' **Open a file in editor**
+#' #' 
+#' #' @noRd
 #' 
-#' @noRd
-
-edit_file <- function(path) {
-  
-  if (rstudioapi::isAvailable() && rstudioapi::hasFun("navigateToFile")) {
-    
-    rstudioapi::navigateToFile(path)
-    
-  } else {
-    
-    utils::file.edit(path)  
-  }
-  
-  invisible(NULL)
-}
+#' edit_file <- function(path) {
+#'   
+#'   if (rstudioapi::isAvailable() && rstudioapi::hasFun("navigateToFile")) {
+#'     
+#'     rstudioapi::navigateToFile(path)
+#'     
+#'   } else {
+#'     
+#'     utils::file.edit(path)  
+#'   }
+#'   
+#'   invisible(NULL)
+#' }
 
 
 
