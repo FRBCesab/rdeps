@@ -2,7 +2,23 @@
 #' 
 #' @noRd
 
-path_proj <- function() usethis::proj_get()
+path_proj <- function() {
+  
+  is_descr_file <- file.exists(file.path(getwd(), "DESCRIPTION"))
+  is_here_file  <- file.exists(file.path(getwd(), ".here"))
+  is_git_folder <- dir.exists(file.path(getwd(), ".git"))
+  
+  is_rproj_file <- ifelse(length(list.files(getwd(), pattern = "\\.Rproj")) > 0,
+                          TRUE, FALSE)
+  
+  if ((is_descr_file + is_here_file + is_git_folder + is_rproj_file) == 0) {
+    stop("It appears that the current working directory is not a valid ", 
+         "project or package. Read more at ", 
+         "'https://usethis.r-lib.org/reference/proj_utils.html'", call. = FALSE)
+  }
+  
+  getwd()
+}
 
 
 

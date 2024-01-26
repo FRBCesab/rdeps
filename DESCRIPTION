@@ -23,5 +23,4 @@ Imports:
     cli,
     crayon,
     rstudioapi,
-    usethis,
     utils
