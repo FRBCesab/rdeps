@@ -177,7 +177,7 @@ add_deps <- function() {
     pos <- which(colnames(descr_file) == "Depends")
     if (length(pos)) descr_file <- descr_file[ , -pos]
     
-    msg_oops("No package found", indent = "  ")
+    msg_oops("No package found", indent = "    ")
     
   } else {
     
@@ -185,12 +185,12 @@ add_deps <- function() {
     descr_file$"Depends" <- paste0("\n    ", deps_depends_txt)
     
     msg_done("Found", msg_value(length(deps_depends)), "package(s)", 
-             indent = "  ")
+             indent = "    ")
     
     msg <- paste0("Depends: ", paste0(deps_depends, collapse = ", "))
     msg_done("Adding the following line in", msg_value('DESCRIPTION'),
-             indent = "  ")
-    msg_line(msg_code(msg), indent = "    ")
+             indent = "    ")
+    msg_line(msg_code(msg), indent = "      ")
   }
   
   
@@ -201,7 +201,7 @@ add_deps <- function() {
     pos <- which(colnames(descr_file) == "Imports")
     if (length(pos)) descr_file <- descr_file[ , -pos]
     
-    msg_oops("No package found", indent = "  ")
+    msg_oops("No package found", indent = "    ")
     
   } else {
     
@@ -209,12 +209,12 @@ add_deps <- function() {
     descr_file$"Imports" <- paste0("\n    ", deps_imports_txt)
     
     msg_done("Found", msg_value(length(deps_imports)), "package(s)", 
-             indent = "  ")
+             indent = "    ")
     
     msg <- paste0("Imports: ", paste0(deps_imports, collapse = ", "))
     msg_done("Adding the following line in", msg_value('DESCRIPTION'),
-             indent = "  ")
-    msg_line(msg_code(msg), indent = "    ")
+             indent = "    ")
+    msg_line(msg_code(msg), indent = "      ")
   }
   
   
@@ -225,7 +225,7 @@ add_deps <- function() {
     pos <- which(colnames(descr_file) == "Suggests")
     if (length(pos)) descr_file <- descr_file[ , -pos]
     
-    msg_oops("No package found", indent = "  ")
+    msg_oops("No package found", indent = "    ")
     
   } else {
     
@@ -233,12 +233,12 @@ add_deps <- function() {
     descr_file$"Suggests" <- paste0("\n    ", deps_suggests_txt)
     
     msg_done("Found", msg_value(length(deps_suggests)), "package(s)", 
-             indent = "  ")
+             indent = "    ")
     
     msg <- paste0("Suggests: ", paste0(deps_suggests, collapse = ", "))
     msg_done("Adding the following line in", msg_value('DESCRIPTION'),
-             indent = "  ")
-    msg_line(msg_code(msg), indent = "    ")
+             indent = "    ")
+    msg_line(msg_code(msg), indent = "      ")
   }
   
   

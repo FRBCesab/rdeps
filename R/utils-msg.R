@@ -3,7 +3,7 @@
 msg_done <- function(..., indent = "") {
   
   x <- paste(...)
-  x <- msg_bullet(x, indent = indent, crayon::green(cli::symbol$"tick"))
+  x <- msg_bullet(x, indent = indent, cli::col_green(cli::symbol$"tick"))
   cli::cat_line(x)
   
   invisible(NULL)
@@ -16,7 +16,7 @@ msg_done <- function(..., indent = "") {
 msg_oops <- function(..., indent = "") {
   
   x <- paste(...)
-  x <- msg_bullet(x, indent = indent, crayon::red(cli::symbol$"cross"))
+  x <- msg_bullet(x, indent = indent, cli::col_red(cli::symbol$"cross"))
   cli::cat_line(x)
   
   invisible(NULL)
@@ -29,7 +29,7 @@ msg_oops <- function(..., indent = "") {
 msg_info <- function(..., indent = "") {
   
   x <- paste(...)
-  x <- msg_bullet(x, indent = indent, crayon::blue("(*)"))
+  x <- msg_bullet(x, indent = indent, cli::col_blue("(*)"))
   cli::cat_line(x)
   
   invisible(NULL)
@@ -59,7 +59,7 @@ msg_value <- function(...) {
     x <- encodeString(x, quote = "'")
   }
   
-  invisible(paste0(crayon::blue(x), collapse = ", "))
+  invisible(paste0(cli::col_blue(x), collapse = ", "))
 }
 
 
@@ -74,7 +74,7 @@ msg_code <- function(...) {
     x <- encodeString(x, quote = "`")
   }
   
-  invisible(paste0(crayon::silver(x), collapse = ", "))
+  invisible(paste0(cli::col_silver(x), collapse = ", "))
 }
 
 

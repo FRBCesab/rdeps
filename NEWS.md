@@ -4,6 +4,7 @@
 * Remove dependency to `stringr`
 * Remove dependency to `usethis`
 * Remove dependency to `rstudioapi`
+* Remove dependency to `crayon`
 
 # rdeps 0.1
 
