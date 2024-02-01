@@ -10,3 +10,5 @@
 ^_pkgdown\.yaml$
 ^CITATION\.cff$
 ^cran-comments\.md$
+^codemeta\.json$
+^CRAN-SUBMISSION$
