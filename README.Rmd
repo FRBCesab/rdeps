@@ -18,7 +18,7 @@ rdeps <img src="man/figures/logo.png" align="right" style="float:right; height:1
 =========================================================
 
 <!-- badges: start -->
-[![CRAN status](https://www.r-pkg.org/badges/version/rdeps)](https://CRAN.R-project.org/package=rdeps)
+<!-- [![CRAN status](https://www.r-pkg.org/badges/version/rdeps)](https://CRAN.R-project.org/package=rdeps) -->
 [![R CMD Check](https://github.com/frbcesab/rdeps/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/frbcesab/rdeps/actions/workflows/R-CMD-check.yaml)
 [![Website](https://github.com/frbcesab/rdeps/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/frbcesab/rdeps/actions/workflows/pkgdown.yaml)
 [![License: GPL (>= 2)](https://img.shields.io/badge/License-GPL%20%28%3E%3D%202%29-blue.svg)](https://choosealicense.com/licenses/gpl-2.0/)
@@ -104,7 +104,7 @@ can be created and added to an existing project with the function
 Please cite `rdeps` as: 
 
 > Casajus Nicolas (`r format(Sys.Date(), "%Y")`) rdeps: An R 
-package to identify external packages used in a project. R package version 0.1,
+package to identify external packages used in a project. R package version 0.2,
 <https://github.com/frbcesab/rdeps/>.
 
 

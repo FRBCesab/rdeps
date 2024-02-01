@@ -6,6 +6,8 @@
 \alias{rdeps-package}
 \title{rdeps: Identify External Packages Used in a Project}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 Screens all '.R', '.Rmd', and '.qmd' files to extract the name of packages used in a project. This package detects packages called with 'library(foo)', 'require(foo)', and 'foo::bar()' and adds these dependencies in the DESCRIPTION file in the sections Depends, Imports, and Suggests.
 }
 \seealso{

@@ -9,3 +9,4 @@
 ^README\.html$
 ^_pkgdown\.yaml$
 ^CITATION\.cff$
+^cran-comments\.md$

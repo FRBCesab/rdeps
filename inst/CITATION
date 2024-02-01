@@ -5,6 +5,6 @@ bibentry(
   title   = "rdeps: {An} {R} package to identify external packages used in a project",
   author  = c(person("Casajus Nicolas")),
   year    = "2023",
-  note    = "R package version 0.1",
+  note    = "R package version 0.2",
   url     = "https://github.com/frbcesab/rdeps"
 )

@@ -1,4 +1,4 @@
-# rdeps 0.1.9000 (development version)
+# rdeps 0.2
 
 * Fix error when no package is listed in `DESCRIPTION`
 * Remove dependency to `stringr`
