@@ -4,8 +4,9 @@
 # rdeps <img src="man/figures/logo.png" align="right" style="float:right; height:120px;"/>
 
 <!-- badges: start -->
-<!-- [![CRAN status](https://www.r-pkg.org/badges/version/rdeps)](https://CRAN.R-project.org/package=rdeps) -->
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/rdeps)](https://CRAN.R-project.org/package=rdeps)
 [![R CMD
 Check](https://github.com/frbcesab/rdeps/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/frbcesab/rdeps/actions/workflows/R-CMD-check.yaml)
 [![Website](https://github.com/frbcesab/rdeps/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/frbcesab/rdeps/actions/workflows/pkgdown.yaml)
@@ -50,7 +51,15 @@ Different types of dependencies are handled:
 
 ## Installation
 
-You can install the development version from
+You can install the stable version from
+[CRAN](https://cran.r-project.org/) with:
+
+``` r
+## Install stable version of < rdeps > from CRAN ----
+install.packages("rdeps")
+```
+
+Or you can install the development version from
 [GitHub](https://github.com/) with:
 
 ``` r
