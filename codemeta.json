@@ -14,6 +14,12 @@
     "url": "https://r-project.org"
   },
   "runtimePlatform": "R version 4.3.2 (2023-10-31)",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
   "author": [
     {
       "@type": "Person",
@@ -61,7 +67,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "212.375KB",
+  "fileSize": "212.584KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -79,5 +85,6 @@
   ],
   "releaseNotes": "https://github.com/frbcesab/rdeps/blob/master/NEWS.md",
   "readme": "https://github.com/FRBCesab/rdeps/blob/main/README.md",
-  "contIntegration": ["https://github.com/frbcesab/rdeps/actions/workflows/R-CMD-check.yaml", "https://github.com/frbcesab/rdeps/actions/workflows/pkgdown.yaml"]
+  "contIntegration": ["https://github.com/frbcesab/rdeps/actions/workflows/R-CMD-check.yaml", "https://github.com/frbcesab/rdeps/actions/workflows/pkgdown.yaml"],
+  "relatedLink": "https://CRAN.R-project.org/package=rdeps"
 }
