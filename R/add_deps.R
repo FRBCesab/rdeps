@@ -132,6 +132,7 @@ add_deps <- function() {
     
   } else {
     
+    pkg_names    <- NULL
     pkg_versions <- NULL
   }
   
