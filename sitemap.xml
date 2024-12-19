@@ -1,33 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://frbcesab.github.io/rdeps/404.html</loc>
-  </url>
-  <url>
-    <loc>https://frbcesab.github.io/rdeps/CODE_OF_CONDUCT.html</loc>
-  </url>
-  <url>
-    <loc>https://frbcesab.github.io/rdeps/CONTRIBUTING.html</loc>
-  </url>
-  <url>
-    <loc>https://frbcesab.github.io/rdeps/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://frbcesab.github.io/rdeps/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://frbcesab.github.io/rdeps/index.html</loc>
-  </url>
-  <url>
-    <loc>https://frbcesab.github.io/rdeps/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://frbcesab.github.io/rdeps/reference/add_deps.html</loc>
-  </url>
-  <url>
-    <loc>https://frbcesab.github.io/rdeps/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://frbcesab.github.io/rdeps/reference/rdeps-package.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://frbcesab.github.io/rdeps/404.html</loc></url>
+<url><loc>https://frbcesab.github.io/rdeps/CODE_OF_CONDUCT.html</loc></url>
+<url><loc>https://frbcesab.github.io/rdeps/CONTRIBUTING.html</loc></url>
+<url><loc>https://frbcesab.github.io/rdeps/LICENSE.html</loc></url>
+<url><loc>https://frbcesab.github.io/rdeps/authors.html</loc></url>
+<url><loc>https://frbcesab.github.io/rdeps/index.html</loc></url>
+<url><loc>https://frbcesab.github.io/rdeps/news/index.html</loc></url>
+<url><loc>https://frbcesab.github.io/rdeps/reference/add_deps.html</loc></url>
+<url><loc>https://frbcesab.github.io/rdeps/reference/index.html</loc></url>
+<url><loc>https://frbcesab.github.io/rdeps/reference/rdeps-package.html</loc></url>
 </urlset>
+
