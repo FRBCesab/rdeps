@@ -6,7 +6,7 @@
 #' **Imports**, and **Suggests** of the `DESCRIPTION` file.
 #' 
 #' A `DESCRIPTION` file can be created and added to an existing project with 
-#' the function [usethis::use_description()].
+#' the function `use_description()` of the package `usethis`.
 #'  
 #' All `.R`, `.Rmd`, and `.qmd` files are screened to identify packages 
 #' called by `library(foo)`, `library("foo")`, `library('foo')`, 
