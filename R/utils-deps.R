@@ -505,7 +505,7 @@ get_deps_in_markdown <- function(directory = "vignettes") {
   
   if (length(qmd_files) > 0) {
     
-    packages_to_add <- c(packages_to_add, "knitr", "quarto")
+    packages_to_add <- c(packages_to_add, "knitr", "rmarkdown")
   }
   
   
@@ -699,15 +699,25 @@ get_attached_deps <- function(x) {
 get_code_chunk <- function(x) {
   
   lapply(x, function(x) {
-    back_ticks <- grep("```", x)
-    back_ticks <- data.frame(
-      "start" = back_ticks[seq(1, length(back_ticks), by = 2)], 
-      "end"   = back_ticks[seq(2, length(back_ticks), by = 2)])
     
     chunks <- NULL
-    for (i in 1:nrow(back_ticks)) {
-      chunks <- c(chunks, 
-                  x[(back_ticks[i, "start"] + 1):(back_ticks[i, "end"] - 1)])
+    
+    back_ticks <- grep("```", x)
+    
+    if (length(back_ticks) > 0) {
+      
+      back_ticks <- data.frame(
+        "start" = back_ticks[seq(1, length(back_ticks), by = 2)], 
+        "end"   = back_ticks[seq(2, length(back_ticks), by = 2)])
+
+      for (i in 1:nrow(back_ticks)) {
+
+        if (length(grep("```\\s{0,}\\{\\s{0,}r", x[back_ticks[i, "start"]])) > 0) {
+
+          chunks <- c(chunks, 
+            x[(back_ticks[i, "start"] + 1):(back_ticks[i, "end"] - 1)])
+        }
+      } 
     }
     
     inline_chunks <- x[grep("`r\\s{1,}.*`", x)]
