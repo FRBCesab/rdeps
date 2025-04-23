@@ -1,14 +1,17 @@
-# -----------------------------------------------------------
-# CITATION file created with {cffr} R package, v0.5.0
+# --------------------------------------------
+# CITATION file created with {cffr} R package
 # See also: https://docs.ropensci.org/cffr/
-# -----------------------------------------------------------
+# --------------------------------------------
  
 cff-version: 1.2.0
 message: 'To cite package "rdeps" in publications use:'
 type: software
 license: GPL-2.0-or-later
 title: 'rdeps: Identify External Packages Used in a Project'
-version: '0.1'
+version: '0.3'
+identifiers:
+- type: doi
+  value: 10.32614/CRAN.package.rdeps
 abstract: Screens all '.R', '.Rmd', and '.qmd' files to extract the name of packages
   used in a project. This package detects packages called with 'library(foo)', 'require(foo)',
   and 'foo::bar()' and adds these dependencies in the DESCRIPTION file in the sections
@@ -23,9 +26,10 @@ preferred-citation:
   title: 'rdeps: An R package to identify external packages used in a project'
   authors:
   - name: Casajus Nicolas
-  year: '2023'
-  notes: R package version 0.1
+  year: '2025'
+  notes: R package version 0.3
   url: https://github.com/frbcesab/rdeps
+repository: https://CRAN.R-project.org/package=rdeps
 repository-code: https://github.com/frbcesab/rdeps
 url: https://github.com/frbcesab/rdeps
 contact:
@@ -43,16 +47,17 @@ references:
   authors:
   - family-names: Csárdi
     given-names: Gábor
-    email: csardi.gabor@gmail.com
-  year: '2024'
+    email: gabor@posit.co
+  year: '2025'
+  doi: 10.32614/CRAN.package.cli
 - type: software
   title: utils
   abstract: 'R: A Language and Environment for Statistical Computing'
   notes: Imports
   authors:
   - name: R Core Team
-  location:
-    name: Vienna, Austria
-  year: '2024'
   institution:
     name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2025'
+
