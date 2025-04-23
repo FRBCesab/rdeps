@@ -19,14 +19,15 @@ the function \code{use_description()} of the package \code{usethis}.
 
 All \code{.R}, \code{.Rmd}, and \code{.qmd} files are screened to identify packages
 called by \code{library(foo)}, \code{library("foo")}, \code{library('foo')},
-\code{require(foo)}, \code{require("foo")}, \code{require('foo')} or \code{foo::bar()}.
+\code{require(foo)}, \code{require("foo")}, \code{require('foo')}, \code{foo::bar()} or
+\code{use("foo", "bar")}.
 
 Different types of dependencies are handled with the following rules:
 \itemize{
 \item if a package is called with \code{library(foo)} or \code{require(foo)},
 it will be added to the section \strong{Depends} of the \code{DESCRIPTION} file
 (except for vignettes and tests);
-\item if the package is called with \code{foo::bar()},
+\item if the package is called with \code{foo::bar()} or \code{use("foo", "bar")},
 it will be added to the section \strong{Imports} of the \code{DESCRIPTION} file
 (except for vignettes and tests);
 \item if the package is only used in vignettes or tests,

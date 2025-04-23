@@ -12,3 +12,5 @@
 ^cran-comments\.md$
 ^codemeta\.json$
 ^CRAN-SUBMISSION$
+^\.here$
+^air\.toml$

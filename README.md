@@ -43,9 +43,9 @@ Different types of dependencies are handled:
 - if the package is called with `library(foo)` or `require(foo)`, it
   will be added to the section **Depends** of the `DESCRIPTION` file
   (except for vignettes and tests);
-- if the package is called with `foo::bar()`, it will be added to the
-  section **Imports** of the `DESCRIPTION` file (except for vignettes
-  and tests);
+- if the package is called with `foo::bar()` or `use("foo", "bar")`, it
+  will be added to the section **Imports** of the `DESCRIPTION` file
+  (except for vignettes and tests);
 - if the package is only used in vignettes or tests, it will be added to
   the section **Suggests** of the `DESCRIPTION` file.
 
@@ -93,8 +93,8 @@ the function
 
 Please cite `rdeps` as:
 
-> Casajus Nicolas (2024) rdeps: An R package to identify external
-> packages used in a project. R package version 0.2,
+> Casajus Nicolas (2025) rdeps: An R package to identify external
+> packages used in a project. R package version 0.3,
 > <https://github.com/frbcesab/rdeps/>.
 
 ## Contributing
