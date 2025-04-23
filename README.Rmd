@@ -6,10 +6,12 @@ output: github_document
 
 
 ```{r, include = FALSE}
-knitr::opts_chunk$set(collapse  = TRUE,
-                      comment   = "#>",
-                      fig.path  = "man/figures/",
-                      out.width = "100%")
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/",
+  out.width = "100%"
+)
 ```
 
 
@@ -57,7 +59,7 @@ Different types of dependencies are handled:
 - if the package is called with `library(foo)` or `require(foo)`, 
 it will be added to the section **Depends** of the `DESCRIPTION` file 
 (except for vignettes and tests);
-- if the package is called with `foo::bar()`,
+- if the package is called with `foo::bar()` or `use("foo", "bar")`,
 it will be added to the section **Imports** of the `DESCRIPTION` file
 (except for vignettes and tests);
 - if the package is only used in vignettes or tests,
