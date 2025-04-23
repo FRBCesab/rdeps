@@ -94,7 +94,7 @@ the function
 Please cite `rdeps` as:
 
 > Casajus Nicolas (2025) rdeps: An R package to identify external
-> packages used in a project. R package version 0.2,
+> packages used in a project. R package version 0.3,
 > <https://github.com/frbcesab/rdeps/>.
 
 ## Contributing
