@@ -229,7 +229,10 @@ get_deps_in_functions <- function(directory = "R") {
 
   ## Functions called as pkg::fun() ----
 
-  deps_imports <- get_colon_syntax_deps(content)
+  deps_imports <- c(
+    get_colon_syntax_deps(content),
+    get_use_deps(content)
+  )
 
   ## Attached Packages (library & require) ----
 
@@ -358,7 +361,10 @@ get_deps_in_examples <- function(directory = "R") {
 
   ## Functions called as pkg::fun() ----
 
-  deps_imports <- get_colon_syntax_deps(content)
+  deps_imports <- c(
+    get_colon_syntax_deps(content),
+    get_use_deps(content)
+  )
 
   ## Attached Packages (library & require) ----
 
@@ -503,7 +509,10 @@ get_deps_in_markdown <- function(directory = "vignettes") {
 
   ## Functions called as pkg::fun() ----
 
-  deps_imports <- get_colon_syntax_deps(content)
+  deps_imports <- c(
+    get_colon_syntax_deps(content),
+    get_use_deps(content)
+  )
 
   ## Add additional packages ----
 
@@ -570,10 +579,73 @@ remove_rd_comment_lines <- function(x) {
 #' @noRd
 
 remove_messages <- function(x) {
-  x <- lapply(x, function(x) gsub("\".{0,}\'.{0,}\'.{0,}\"", "", x))
-  x <- lapply(x, function(x) gsub("\'.{0,}\".{0,}\".{0,}\'", "", x))
-  x <- lapply(x, function(x) gsub("\".{0,}\\\".{0,}\\\".{0,}\"", "", x))
-  x <- lapply(x, function(x) gsub("\'.{0,}\\\'.{0,}\\\'.{0,}\'", "", x))
+  x <- lapply(x, function(x) {
+    pos <- grep(
+      paste0(
+        "^\\s{0,}use\\s{0,}\\(|",
+        "^\\s{0,}library\\s{0,}\\(|",
+        "^\\s{0,}require\\s{0,}\\("
+      ),
+      x
+    )
+    if (length(pos) > 0) {
+      x[-pos] <- gsub("\".{0,}\'.{0,}\'.{0,}\"", "", x[-pos])
+    } else {
+      x <- gsub("\".{0,}\'.{0,}\'.{0,}\"", "", x)
+    }
+    x
+  })
+
+  x <- lapply(x, function(x) {
+    pos <- grep(
+      paste0(
+        "^\\s{0,}use\\s{0,}\\(|",
+        "^\\s{0,}library\\s{0,}\\(|",
+        "^\\s{0,}require\\s{0,}\\("
+      ),
+      x
+    )
+    if (length(pos) > 0) {
+      x[-pos] <- gsub("\'.{0,}\".{0,}\".{0,}\'", "", x[-pos])
+    } else {
+      x <- gsub("\'.{0,}\".{0,}\".{0,}\'", "", x)
+    }
+    x
+  })
+
+  x <- lapply(x, function(x) {
+    pos <- grep(
+      paste0(
+        "^\\s{0,}use\\s{0,}\\(|",
+        "^\\s{0,}library\\s{0,}\\(|",
+        "^\\s{0,}require\\s{0,}\\("
+      ),
+      x
+    )
+    if (length(pos) > 0) {
+      x[-pos] <- gsub("\".{0,}\\\".{0,}\\\".{0,}\"", "", x[-pos])
+    } else {
+      x <- gsub("\".{0,}\\\".{0,}\\\".{0,}\"", "", x)
+    }
+    x
+  })
+
+  x <- lapply(x, function(x) {
+    pos <- grep(
+      paste0(
+        "^\\s{0,}use\\s{0,}\\(|",
+        "^\\s{0,}library\\s{0,}\\(|",
+        "^\\s{0,}require\\s{0,}\\("
+      ),
+      x
+    )
+    if (length(pos) > 0) {
+      x[-pos] <- gsub("\'.{0,}\\\'.{0,}\\\'.{0,}\'", "", x[-pos])
+    } else {
+      x <- gsub("\'.{0,}\\\'.{0,}\\\'.{0,}\'", "", x)
+    }
+    x
+  })
 
   x
 }
@@ -601,6 +673,29 @@ get_colon_syntax_deps <- function(x) {
   deps <- strsplit(funs, "::")
   deps <- lapply(deps, function(x) x[1])
   deps <- sort(unique(unlist(deps)))
+
+  if (length(deps) == 0) deps <- NULL
+
+  deps
+}
+
+
+#' **Detect packages called by use()**
+#'
+#' Detect packages called by the use function (i.e. `use("dplyr", "filter")`).
+#'
+#' @noRd
+
+get_use_deps <- function(x) {
+  pattern <- "^\\s{0,}use\\s{0,}\\((\"|\').+(\"|\')(\\s{0,}\\)?\\s{0,}),"
+
+  funs <- unlist(lapply(x, function(x) {
+    unlist(regmatches(x, gregexpr(pattern, x)))
+  }))
+
+  deps <- gsub("\\s|use|\\(|,|\"|\'", "", funs)
+
+  deps <- sort(unique(deps))
 
   if (length(deps) == 0) deps <- NULL
 
