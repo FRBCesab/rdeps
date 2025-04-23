@@ -10,13 +10,14 @@
 #'
 #' All `.R`, `.Rmd`, and `.qmd` files are screened to identify packages
 #' called by `library(foo)`, `library("foo")`, `library('foo')`,
-#' `require(foo)`, `require("foo")`, `require('foo')` or `foo::bar()`.
+#' `require(foo)`, `require("foo")`, `require('foo')`, `foo::bar()` or
+#' `use("foo", "bar")`.
 #'
 #' Different types of dependencies are handled with the following rules:
 #' - if a package is called with `library(foo)` or `require(foo)`,
 #' it will be added to the section **Depends** of the `DESCRIPTION` file
 #' (except for vignettes and tests);
-#' - if the package is called with `foo::bar()`,
+#' - if the package is called with `foo::bar()` or `use("foo", "bar")`,
 #' it will be added to the section **Imports** of the `DESCRIPTION` file
 #' (except for vignettes and tests);
 #' - if the package is only used in vignettes or tests,
