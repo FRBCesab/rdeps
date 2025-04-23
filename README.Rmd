@@ -115,7 +115,7 @@ can be created and added to an existing project with the function
 Please cite `rdeps` as: 
 
 > Casajus Nicolas (`r format(Sys.Date(), "%Y")`) rdeps: An R 
-package to identify external packages used in a project. R package version 0.2,
+package to identify external packages used in a project. R package version 0.3,
 <https://github.com/frbcesab/rdeps/>.
 
 
