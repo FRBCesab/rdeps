@@ -6,12 +6,13 @@ A DESCRIPTION file can be created and added to an existing project with
 the function use_description() of the package usethis.
 All .R, .Rmd, and .qmd files are screened to identify packages
 called by library(foo), library(&quot;foo&quot;), library('foo'),
-require(foo), require(&quot;foo&quot;), require('foo') or foo::bar().
+require(foo), require(&quot;foo&quot;), require('foo'), foo::bar() or
+use(&quot;foo&quot;, &quot;bar&quot;).
 Different types of dependencies are handled with the following rules:
 if a package is called with library(foo) or require(foo),
 it will be added to the section Depends of the DESCRIPTION file
 (except for vignettes and tests);
-if the package is called with foo::bar(),
+if the package is called with foo::bar() or use(&quot;foo&quot;, &quot;bar&quot;),
 it will be added to the section Imports of the DESCRIPTION file
 (except for vignettes and tests);
 if the package is only used in vignettes or tests,
@@ -31,12 +32,13 @@ A DESCRIPTION file can be created and added to an existing project with
 the function use_description() of the package usethis.
 All .R, .Rmd, and .qmd files are screened to identify packages
 called by library(foo), library(&quot;foo&quot;), library('foo'),
-require(foo), require(&quot;foo&quot;), require('foo') or foo::bar().
+require(foo), require(&quot;foo&quot;), require('foo'), foo::bar() or
+use(&quot;foo&quot;, &quot;bar&quot;).
 Different types of dependencies are handled with the following rules:
 if a package is called with library(foo) or require(foo),
 it will be added to the section Depends of the DESCRIPTION file
 (except for vignettes and tests);
-if the package is called with foo::bar(),
+if the package is called with foo::bar() or use(&quot;foo&quot;, &quot;bar&quot;),
 it will be added to the section Imports of the DESCRIPTION file
 (except for vignettes and tests);
 if the package is only used in vignettes or tests,
@@ -57,7 +59,7 @@ Imports section of the DESCRIPTION file."><meta property="og:image" content="htt
 
     <a class="navbar-brand me-2" href="../index.html">rdeps</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,11 +92,12 @@ compendium, website, etc.) and updates the sections <strong>Depends</strong>,
 the function <code>use_description()</code> of the package <code>usethis</code>.</p>
 <p>All <code>.R</code>, <code>.Rmd</code>, and <code>.qmd</code> files are screened to identify packages
 called by <code><a href="https://rdrr.io/r/base/library.html" class="external-link">library(foo)</a></code>, <code><a href="https://rdrr.io/r/base/library.html" class="external-link">library("foo")</a></code>, <code><a href="https://rdrr.io/r/base/library.html" class="external-link">library('foo')</a></code>,
-<code><a href="https://rdrr.io/r/base/library.html" class="external-link">require(foo)</a></code>, <code><a href="https://rdrr.io/r/base/library.html" class="external-link">require("foo")</a></code>, <code><a href="https://rdrr.io/r/base/library.html" class="external-link">require('foo')</a></code> or <code>foo::bar()</code>.</p>
+<code><a href="https://rdrr.io/r/base/library.html" class="external-link">require(foo)</a></code>, <code><a href="https://rdrr.io/r/base/library.html" class="external-link">require("foo")</a></code>, <code><a href="https://rdrr.io/r/base/library.html" class="external-link">require('foo')</a></code>, <code>foo::bar()</code> or
+<code>use("foo", "bar")</code>.</p>
 <p>Different types of dependencies are handled with the following rules:</p><ul><li><p>if a package is called with <code><a href="https://rdrr.io/r/base/library.html" class="external-link">library(foo)</a></code> or <code><a href="https://rdrr.io/r/base/library.html" class="external-link">require(foo)</a></code>,
 it will be added to the section <strong>Depends</strong> of the <code>DESCRIPTION</code> file
 (except for vignettes and tests);</p></li>
-<li><p>if the package is called with <code>foo::bar()</code>,
+<li><p>if the package is called with <code>foo::bar()</code> or <code>use("foo", "bar")</code>,
 it will be added to the section <strong>Imports</strong> of the <code>DESCRIPTION</code> file
 (except for vignettes and tests);</p></li>
 <li><p>if the package is only used in vignettes or tests,
