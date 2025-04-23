@@ -10,9 +10,9 @@ Authors@R: c(
            comment = c(ORCID = "0000-0002-5537-5294")))
 Description: Screens all '.R', '.Rmd', and '.qmd' files to extract the name of
     packages used in a project. This package detects packages called with 
-    'library(foo)', 'require(foo)', and 'foo::bar()' and adds these 
-    dependencies in the DESCRIPTION file in the sections Depends, Imports, and 
-    Suggests.
+    'library(foo)', 'require(foo)', 'foo::bar()' and 'use("foo", "bar")' and 
+    adds these dependencies in the DESCRIPTION file in the sections Depends, 
+    Imports, and Suggests.
 URL: https://github.com/frbcesab/rdeps
 BugReports: https://github.com/frbcesab/rdeps/issues
 License: GPL (>= 2)
