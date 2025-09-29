@@ -2,18 +2,18 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "rdeps",
-  "description": "Screens all '.R', '.Rmd', and '.qmd' files to extract the name of packages used in a project. This package detects packages called with 'library(foo)', 'require(foo)', and 'foo::bar()' and adds these dependencies in the DESCRIPTION file in the sections Depends, Imports, and Suggests.",
+  "description": "Screens all '.R', '.Rmd', and '.qmd' files to extract the name of packages used in a project. This package detects packages called with 'library(foo)', 'require(foo)', 'foo::bar()' and 'use(\"foo\", \"bar\")' and adds these dependencies in the DESCRIPTION file in the sections Depends, Imports, and Suggests.",
   "name": "rdeps: Identify External Packages Used in a Project",
   "codeRepository": "https://github.com/frbcesab/rdeps",
   "issueTracker": "https://github.com/frbcesab/rdeps/issues",
   "license": "https://spdx.org/licenses/GPL-2.0",
-  "version": "0.2",
+  "version": "0.3",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.4.2 (2024-10-31)",
+  "runtimePlatform": "R version 4.5.1 (2025-06-13)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -67,11 +67,11 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "212.609KB",
+  "fileSize": "212.822KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
-      "datePublished": "2023",
+      "datePublished": "2025",
       "author": [
         {
           "@type": "Organization",
@@ -80,10 +80,10 @@
       ],
       "name": "rdeps: {An} {R} package to identify external packages used in a project",
       "url": "https://github.com/frbcesab/rdeps",
-      "description": "R package version 0.2"
+      "description": "R package version 0.3"
     }
   ],
-  "releaseNotes": "https://github.com/frbcesab/rdeps/blob/master/NEWS.md",
+  "releaseNotes": "https://github.com/frbcesab/rdeps/blob/main/NEWS.md",
   "readme": "https://github.com/FRBCesab/rdeps/blob/main/README.md",
   "contIntegration": ["https://github.com/frbcesab/rdeps/actions/workflows/R-CMD-check.yaml", "https://github.com/frbcesab/rdeps/actions/workflows/pkgdown.yaml"],
   "relatedLink": "https://CRAN.R-project.org/package=rdeps"
