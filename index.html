@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="index.html">rdeps</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,13 +65,14 @@
 <div class="section level2">
 <h2 id="features">Features<a class="anchor" aria-label="anchor" href="#features"></a>
 </h2>
-<p><code>rdeps</code> screens all <code>.R</code>, <code>.Rmd</code>, and <code>.qmd</code> files to extract the name of packages used in a project. This package detects packages called with <code><a href="https://rdrr.io/r/base/library.html" class="external-link">library(foo)</a></code>, <code><a href="https://rdrr.io/r/base/library.html" class="external-link">require(foo)</a></code>, and <code>foo::bar()</code> and adds these dependencies to the <code>DESCRIPTION</code> file in the sections <em>Depends</em>, <em>Imports</em>, and <em>Suggests</em>.</p>
+<p><code>rdeps</code> screens all <code>.R</code>, <code>.Rmd</code>, and <code>.qmd</code> files to extract the name of packages used in a project. This package detects packages called with <code><a href="https://rdrr.io/r/base/library.html" class="external-link">library(foo)</a></code>, <code><a href="https://rdrr.io/r/base/library.html" class="external-link">require(foo)</a></code>, <code>foo::bar()</code>, and <code>use("foo", "bar")</code> and adds these dependencies to the <code>DESCRIPTION</code> file in the sections <em>Depends</em>, <em>Imports</em>, and <em>Suggests</em>.</p>
 <p>Different types of dependencies are handled:</p>
 <ul>
 <li>if the package is called with <code><a href="https://rdrr.io/r/base/library.html" class="external-link">library(foo)</a></code> or <code><a href="https://rdrr.io/r/base/library.html" class="external-link">require(foo)</a></code>, it will be added to the section <strong>Depends</strong> of the <code>DESCRIPTION</code> file (except for vignettes and tests);</li>
 <li>if the package is called with <code>foo::bar()</code> or <code>use("foo", "bar")</code>, it will be added to the section <strong>Imports</strong> of the <code>DESCRIPTION</code> file (except for vignettes and tests);</li>
 <li>if the package is only used in vignettes or tests, it will be added to the section <strong>Suggests</strong> of the <code>DESCRIPTION</code> file.</li>
 </ul>
+<p>Since the version <strong>0.4</strong>, <code>rdeps</code> introduces the <code>.rdepsignore</code> file. This file can be used to ignore files or folders when screening files to detect dependencies. This file can be handled with the function <a href="https://frbcesab.github.io/rdeps/reference/add_to_rdepsignore.html"><code>add_to_rdepsignore()</code></a>.</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -96,7 +97,7 @@
 <div class="section level2">
 <h2 id="get-started">Get started<a class="anchor" aria-label="anchor" href="#get-started"></a>
 </h2>
-<p><code>rdeps</code> contains one main function: <a href="https://frbcesab.github.io/rdeps/reference/add_deps.html"><code>add_deps()</code></a>.</p>
+<p><code>rdeps</code> contains two main function: - <a href="https://frbcesab.github.io/rdeps/reference/add_deps.html"><code>add_deps()</code></a>. - <a href="https://frbcesab.github.io/rdeps/reference/add_to_rdepsignore.html"><code>add_to_rdepsignore()</code></a></p>
 <p><strong>Note:</strong> the project must contain a <a href="https://r-pkgs.org/description.html" class="external-link"><code>DESCRIPTION</code></a> file. A <code>DESCRIPTION</code> file can be created and added to an existing project with the function <a href="https://usethis.r-lib.org/reference/use_description.html" class="external-link"><code>usethis::use_description()</code></a>.</p>
 </div>
 <div class="section level2">
@@ -104,7 +105,7 @@
 </h2>
 <p>Please cite <code>rdeps</code> as:</p>
 <blockquote>
-<p>Casajus Nicolas (2025) rdeps: An R package to identify external packages used in a project. R package version 0.3, <a href="https://github.com/frbcesab/rdeps/" class="external-link uri">https://github.com/frbcesab/rdeps/</a>.</p>
+<p>Casajus Nicolas (2025) rdeps: An R package to identify external packages used in a project. R package version 0.4, <a href="https://github.com/frbcesab/rdeps/" class="external-link uri">https://github.com/frbcesab/rdeps/</a>.</p>
 </blockquote>
 </div>
 <div class="section level2">
