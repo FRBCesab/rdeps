@@ -19,7 +19,7 @@ This function adds files/folders to the \code{.rdepsignore} file. The
 detecting dependencies. This plain text file contains a list of files/folders
 to be ignored.
 
-This file will be created if it does not exist and will added to the
+This file will be created if it does not exist and will be added to the
 \code{.Rbuildignore} file.
 }
 \examples{

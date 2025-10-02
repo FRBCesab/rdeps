@@ -6,7 +6,7 @@
 #' detecting dependencies. This plain text file contains a list of files/folders
 #' to be ignored.
 #'
-#' This file will be created if it does not exist and will added to the
+#' This file will be created if it does not exist and will be added to the
 #' `.Rbuildignore` file.
 #'
 #' @param x A `character` vector. One or several file/folder names to be added
