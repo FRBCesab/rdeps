@@ -209,6 +209,10 @@ get_deps_in_functions <- function(directory = "R") {
     )
   )
 
+  ## Ignore files ----
+
+  r_files <- remove_ignored_files(r_files)
+
   ## No .R files in `directory` ----
 
   if (!length(r_files)) {
@@ -242,20 +246,30 @@ get_deps_in_functions <- function(directory = "R") {
 
   pos <- which(deps_imports %in% deps_depends)
 
-  if (length(pos) > 0) deps_imports <- deps_imports[-pos]
+  if (length(pos) > 0) {
+    deps_imports <- deps_imports[-pos]
+  }
 
   ## Remove project name ----
 
   pos <- which(deps_depends == basename(path))
-  if (length(pos) > 0) deps_depends <- deps_depends[-pos]
+  if (length(pos) > 0) {
+    deps_depends <- deps_depends[-pos]
+  }
 
   pos <- which(deps_imports == basename(path))
-  if (length(pos) > 0) deps_imports <- deps_imports[-pos]
+  if (length(pos) > 0) {
+    deps_imports <- deps_imports[-pos]
+  }
 
   ## Clean objects ----
 
-  if (length(deps_depends) == 0) deps_depends <- NULL
-  if (length(deps_imports) == 0) deps_imports <- NULL
+  if (length(deps_depends) == 0) {
+    deps_depends <- NULL
+  }
+  if (length(deps_imports) == 0) {
+    deps_imports <- NULL
+  }
 
   list("depends" = deps_depends, "imports" = deps_imports)
 }
@@ -305,6 +319,8 @@ get_deps_in_examples <- function(directory = "R") {
       recursive = FALSE
     )
   )
+
+  r_files <- remove_ignored_files(r_files)
 
   ## No .R files in `directory` ----
 
@@ -374,20 +390,30 @@ get_deps_in_examples <- function(directory = "R") {
 
   pos <- which(deps_imports %in% deps_depends)
 
-  if (length(pos) > 0) deps_imports <- deps_imports[-pos]
+  if (length(pos) > 0) {
+    deps_imports <- deps_imports[-pos]
+  }
 
   ## Remove project name ----
 
   pos <- which(deps_depends == basename(path))
-  if (length(pos) > 0) deps_depends <- deps_depends[-pos]
+  if (length(pos) > 0) {
+    deps_depends <- deps_depends[-pos]
+  }
 
   pos <- which(deps_imports == basename(path))
-  if (length(pos) > 0) deps_imports <- deps_imports[-pos]
+  if (length(pos) > 0) {
+    deps_imports <- deps_imports[-pos]
+  }
 
   ## Clean objects ----
 
-  if (length(deps_depends) == 0) deps_depends <- NULL
-  if (length(deps_imports) == 0) deps_imports <- NULL
+  if (length(deps_depends) == 0) {
+    deps_depends <- NULL
+  }
+  if (length(deps_imports) == 0) {
+    deps_imports <- NULL
+  }
 
   list("depends" = deps_depends, "imports" = deps_imports)
 }
@@ -440,6 +466,8 @@ get_deps_in_markdown <- function(directory = "vignettes") {
     )
   )
 
+  rmd_files <- remove_ignored_files(rmd_files)
+
   read_me <- which(tolower(basename(rmd_files)) == "readme.rmd")
 
   if (length(read_me) > 0) {
@@ -470,6 +498,8 @@ get_deps_in_markdown <- function(directory = "vignettes") {
       recursive = FALSE
     )
   )
+
+  qmd_files <- remove_ignored_files(qmd_files)
 
   read_me <- which(tolower(basename(qmd_files)) == "readme.qmd")
 
@@ -527,20 +557,30 @@ get_deps_in_markdown <- function(directory = "vignettes") {
 
   pos <- which(deps_imports %in% deps_depends)
 
-  if (length(pos) > 0) deps_imports <- deps_imports[-pos]
+  if (length(pos) > 0) {
+    deps_imports <- deps_imports[-pos]
+  }
 
   ## Remove project name ----
 
   pos <- which(deps_depends == basename(path))
-  if (length(pos) > 0) deps_depends <- deps_depends[-pos]
+  if (length(pos) > 0) {
+    deps_depends <- deps_depends[-pos]
+  }
 
   pos <- which(deps_imports == basename(path))
-  if (length(pos) > 0) deps_imports <- deps_imports[-pos]
+  if (length(pos) > 0) {
+    deps_imports <- deps_imports[-pos]
+  }
 
   ## Clean objects ----
 
-  if (length(deps_depends) == 0) deps_depends <- NULL
-  if (length(deps_imports) == 0) deps_imports <- NULL
+  if (length(deps_depends) == 0) {
+    deps_depends <- NULL
+  }
+  if (length(deps_imports) == 0) {
+    deps_imports <- NULL
+  }
 
   list("depends" = deps_depends, "imports" = deps_imports)
 }
@@ -674,7 +714,9 @@ get_colon_syntax_deps <- function(x) {
   deps <- lapply(deps, function(x) x[1])
   deps <- sort(unique(unlist(deps)))
 
-  if (length(deps) == 0) deps <- NULL
+  if (length(deps) == 0) {
+    deps <- NULL
+  }
 
   deps
 }
@@ -697,7 +739,9 @@ get_use_deps <- function(x) {
 
   deps <- sort(unique(deps))
 
-  if (length(deps) == 0) deps <- NULL
+  if (length(deps) == 0) {
+    deps <- NULL
+  }
 
   deps
 }
@@ -731,7 +775,9 @@ get_attached_deps <- function(x) {
   deps <- gsub("\\s", "", deps)
   deps <- gsub("library\\(|require\\(|\"|\'", "", deps)
 
-  if (length(deps) == 0) deps <- NULL
+  if (length(deps) == 0) {
+    deps <- NULL
+  }
 
   deps
 }
@@ -802,7 +848,9 @@ list_extra_folders <- function() {
       c("inst", "man", "R", "tests", "vignettes", "renv"))
   ]
 
-  if (length(folders) == 0) folders <- NULL
+  if (length(folders) == 0) {
+    folders <- NULL
+  }
 
   folders
 }
@@ -849,20 +897,53 @@ get_deps_in_extra <- function() {
 
   pos <- which(deps_imports %in% deps_depends)
 
-  if (length(pos) > 0) deps_imports <- deps_imports[-pos]
+  if (length(pos) > 0) {
+    deps_imports <- deps_imports[-pos]
+  }
 
   ## Remove project name ----
 
   pos <- which(deps_depends == basename(path))
-  if (length(pos) > 0) deps_depends <- deps_depends[-pos]
+  if (length(pos) > 0) {
+    deps_depends <- deps_depends[-pos]
+  }
 
   pos <- which(deps_imports == basename(path))
-  if (length(pos) > 0) deps_imports <- deps_imports[-pos]
+  if (length(pos) > 0) {
+    deps_imports <- deps_imports[-pos]
+  }
 
   ## Clean objects ----
 
-  if (length(deps_depends) == 0) deps_depends <- NULL
-  if (length(deps_imports) == 0) deps_imports <- NULL
+  if (length(deps_depends) == 0) {
+    deps_depends <- NULL
+  }
+  if (length(deps_imports) == 0) {
+    deps_imports <- NULL
+  }
 
   list("depends" = deps_depends, "imports" = deps_imports)
+}
+
+
+#' **Remove ignored files/folders**
+#'
+#' @noRd
+
+remove_ignored_files <- function(x) {
+  ifiles <- ignored_files()
+  ifiles <- gsub("\\*", ".*", ifiles)
+
+  if (length(ifiles) > 0) {
+    to_rm <- grep(
+      paste0(paste0("^", tolower(ifiles)), collapse = "|"),
+      tolower(x)
+    )
+
+    if (length(to_rm) > 0) {
+      x <- x[-to_rm]
+    }
+  }
+
+  x
 }

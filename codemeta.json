@@ -7,7 +7,7 @@
   "codeRepository": "https://github.com/frbcesab/rdeps",
   "issueTracker": "https://github.com/frbcesab/rdeps/issues",
   "license": "https://spdx.org/licenses/GPL-2.0",
-  "version": "0.3",
+  "version": "0.4",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -67,7 +67,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "212.822KB",
+  "fileSize": "217.67KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -80,7 +80,7 @@
       ],
       "name": "rdeps: {An} {R} package to identify external packages used in a project",
       "url": "https://github.com/frbcesab/rdeps",
-      "description": "R package version 0.3"
+      "description": "R package version 0.4"
     }
   ],
   "releaseNotes": "https://github.com/frbcesab/rdeps/blob/main/NEWS.md",

@@ -38,3 +38,21 @@ write_descr_file <- function(descr_file) {
 
   invisible(NULL)
 }
+
+
+#' **Read .rdepsignore content**
+#'
+#' @noRd
+
+ignored_files <- function() {
+  path <- path_proj()
+
+  rdeps_ignore <- NULL
+
+  if (file.exists(file.path(path_proj(), ".rdepsignore"))) {
+    rdeps_ignore <- readLines(file.path(path_proj(), ".rdepsignore"))
+    rdeps_ignore <- file.path(path_proj(), rdeps_ignore)
+  }
+
+  rdeps_ignore
+}

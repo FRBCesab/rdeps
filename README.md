@@ -15,6 +15,7 @@ Check](https://github.com/frbcesab/rdeps/actions/workflows/R-CMD-check.yaml/badg
 <!-- badges: end -->
 
 <p align="left">
+
 • <a href="#overview">Overview</a><br> •
 <a href="#features">Features</a><br> •
 <a href="#installation">Installation</a><br> •
@@ -34,9 +35,9 @@ and to list them in the
 
 `rdeps` screens all `.R`, `.Rmd`, and `.qmd` files to extract the name
 of packages used in a project. This package detects packages called with
-`library(foo)`, `require(foo)`, and `foo::bar()` and adds these
-dependencies to the `DESCRIPTION` file in the sections *Depends*,
-*Imports*, and *Suggests*.
+`library(foo)`, `require(foo)`, `foo::bar()`, and `use("foo", "bar")`
+and adds these dependencies to the `DESCRIPTION` file in the sections
+*Depends*, *Imports*, and *Suggests*.
 
 Different types of dependencies are handled:
 
@@ -48,6 +49,11 @@ Different types of dependencies are handled:
   (except for vignettes and tests);
 - if the package is only used in vignettes or tests, it will be added to
   the section **Suggests** of the `DESCRIPTION` file.
+
+Since the version **0.4**, `rdeps` introduces the `.rdepsignore` file.
+This file can be used to ignore files or folders when screening files to
+detect dependencies. This file can be handled with the function
+[`add_to_rdepsignore()`](https://frbcesab.github.io/rdeps/reference/add_to_rdepsignore.html).
 
 ## Installation
 
@@ -80,8 +86,9 @@ library("rdeps")
 
 ## Get started
 
-`rdeps` contains one main function:
-[`add_deps()`](https://frbcesab.github.io/rdeps/reference/add_deps.html).
+`rdeps` contains two main function: -
+[`add_deps()`](https://frbcesab.github.io/rdeps/reference/add_deps.html). -
+[`add_to_rdepsignore()`](https://frbcesab.github.io/rdeps/reference/add_to_rdepsignore.html)
 
 **Note:** the project must contain a
 [`DESCRIPTION`](https://r-pkgs.org/description.html) file. A
@@ -94,7 +101,7 @@ the function
 Please cite `rdeps` as:
 
 > Casajus Nicolas (2025) rdeps: An R package to identify external
-> packages used in a project. R package version 0.3,
+> packages used in a project. R package version 0.4,
 > <https://github.com/frbcesab/rdeps/>.
 
 ## Contributing

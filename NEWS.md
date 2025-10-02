@@ -1,3 +1,7 @@
+# rdeps 0.4
+
+* New feature: function to create an `.rdepsignore` file used to ignore files/folders when screening files for dependencies
+
 # rdeps 0.3
 
 * New feature: detect packages called by `use()` as suggested in [#2](https://github.com/FRBCesab/rdeps/issues/2)

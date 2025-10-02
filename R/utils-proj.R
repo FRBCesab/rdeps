@@ -63,3 +63,39 @@ get_roxygen2_version <- function() {
 
   as.character(utils::packageVersion("roxygen2"))
 }
+
+
+#' **Add `.rdepsignore` to `.Rbuildignore`**
+#'
+#' @noRd
+
+add_rdepsignore_to_rbuildignore <- function() {
+  path <- file.path(path_proj(), ".Rbuildignore")
+  if (!file.exists(path)) {
+    invisible(file.create(path))
+
+    msg_done("Creating", msg_value(".Rbuildignore"), "file")
+  }
+
+  x <- "^\\.rdepsignore$"
+
+  rbuild_ignore <- readLines(path)
+
+  x <- x[!(x %in% rbuild_ignore)]
+
+  if (length(x)) {
+    rbuild_ignore <- c(rbuild_ignore, x)
+
+    writeLines(rbuild_ignore, con = path)
+
+    msg_done(
+      "Adding",
+      msg_value(x),
+      "to",
+      msg_value(".Rbuildignore"),
+      "file"
+    )
+  }
+
+  invisible(NULL)
+}
