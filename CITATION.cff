@@ -8,7 +8,7 @@ message: 'To cite package "rdeps" in publications use:'
 type: software
 license: GPL-2.0-or-later
 title: 'rdeps: Identify External Packages Used in a Project'
-version: '0.3'
+version: '0.4'
 identifiers:
 - type: doi
   value: 10.32614/CRAN.package.rdeps
@@ -27,7 +27,7 @@ preferred-citation:
   authors:
   - name: Casajus Nicolas
   year: '2025'
-  notes: R package version 0.3
+  notes: R package version 0.4
   url: https://github.com/frbcesab/rdeps
 repository: https://CRAN.R-project.org/package=rdeps
 repository-code: https://github.com/frbcesab/rdeps
